@@ -110,11 +110,7 @@ async function chainPromises(array, action) {
   }
 
   await chain(0);
-  let resultValue = results[0];
-  for (let i = 1; i < results.length; i += 1) {
-    resultValue = action(resultValue, results[i]);
-  }
-  return resultValue;
+  return results.reduce(action);
 }
 
 module.exports = {
